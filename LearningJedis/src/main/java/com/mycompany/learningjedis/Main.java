@@ -12,6 +12,8 @@ public class Main {
         
         Jedis jedis = new Jedis();
         
+        jedis.flushAll();
+        
         // Setting a simple key-value of strings.
         jedis.set("events/city/rome", "32,15,223,828");
         
