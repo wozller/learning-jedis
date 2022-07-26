@@ -3,6 +3,7 @@ package com.mycompany.learningjedis;
 import redis.clients.jedis.Jedis;
 import java.util.Set;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * @author wozller
@@ -50,10 +51,18 @@ public class Main {
         
         Map<String, String> fields = jedis.hgetAll("user#1");
         String job = fields.get("job");
-        System.out.println(job);
+        //System.out.println(job);
         
+        // Sorted Sets...
+        Map<String, Double> scores = new HashMap<>();
         
+        scores.put("PlayerOne", 3000.0);
+        scores.put("PlayerTwo", 1500.0);
+        scores.put("PlayerThree", 8200.0);
         
+        scores.entrySet().forEach(playerScore -> {
+            jedis.zadd("scores", playerScore.getValue(), playerScore.getKey());
+        });
         
     } // End of main method.
     
