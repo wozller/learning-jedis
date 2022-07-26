@@ -18,6 +18,13 @@ public class Main {
         String cachedResponse = jedis.get("events/city/rome");
         System.out.println(cachedResponse);
         
+        // Lists...
+        
+        jedis.lpush("queue#tasks", "firstTask");
+        jedis.lpush("queue#tasks", "secondTask");
+        
+        String task = jedis.rpop("queue#tasks");
+        
     } // End of main method.
     
 } // End of Main class.
