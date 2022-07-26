@@ -1,12 +1,16 @@
 package com.mycompany.learningjedis;
 
+import redis.clients.jedis.Jedis;
+
 /**
  * @author wozller
  */
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        Jedis jedis = new Jedis();
+        
     } // End of main method.
     
 } // End of Main class.
