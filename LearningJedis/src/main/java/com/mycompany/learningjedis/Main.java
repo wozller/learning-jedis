@@ -1,6 +1,7 @@
 package com.mycompany.learningjedis;
 
 import redis.clients.jedis.Jedis;
+import java.util.Set;
 
 /**
  * @author wozller
@@ -16,7 +17,7 @@ public class Main {
         
         // Getting that key-value of strings.
         String cachedResponse = jedis.get("events/city/rome");
-        System.out.println(cachedResponse);
+        //System.out.println(cachedResponse);
         
         // Lists...
         
@@ -24,6 +25,17 @@ public class Main {
         jedis.lpush("queue#tasks", "secondTask");
         
         String task = jedis.rpop("queue#tasks");
+        
+        // Sets...
+        
+        jedis.sadd("nicknames", "nickname#1");
+        jedis.sadd("nicknames", "nickname#2");
+        jedis.sadd("nicknames", "nickname#1");
+        
+        Set<String> nicknames = jedis.smembers("nicknames");
+        
+        boolean exists = jedis.sismember("nicknames", "nickname#1");
+        System.out.println(exists);
         
     } // End of main method.
     
