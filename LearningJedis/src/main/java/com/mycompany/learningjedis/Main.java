@@ -4,6 +4,7 @@ import redis.clients.jedis.Jedis;
 import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
+import redis.clients.jedis.Transaction;
 
 /**
  * @author wozller
@@ -63,6 +64,21 @@ public class Main {
         scores.entrySet().forEach(playerScore -> {
             jedis.zadd("scores", playerScore.getValue(), playerScore.getKey());
         });
+        
+        // Transactions
+        
+        // Transactions guarantee atomicity and thread safety operations, which
+        // means that requests from other clients will never be handled
+        // concurrently during Redis transactions.
+        
+        String friendsPrefix = "friends#";
+        String userOneId = "4352523";
+        String userTwoId = "5552321";
+        
+        Transaction t = jedis.multi();
+        t.sadd(friendsPrefix + userOneId, userTwoId);
+        t.sadd(friendsPrefix + userTwoId, userOneId);
+        t.exec();
         
     } // End of main method.
     
