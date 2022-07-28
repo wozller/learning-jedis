@@ -13,6 +13,10 @@ public class Main {
 
     public static void main(String[] args) {
         
+    } // End of main method.
+    
+    private void initialJedisExperiment() {
+        
         Jedis jedis = new Jedis();
         
         jedis.flushAll();
@@ -80,6 +84,6 @@ public class Main {
         t.sadd(friendsPrefix + userTwoId, userOneId);
         t.exec();
         
-    } // End of main method.
+    } // End of initialJedisExperiment method.
     
 } // End of Main class.
