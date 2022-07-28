@@ -22,13 +22,21 @@ public class Main {
         
     } // End of main method.
     
-    private void postgreSQL_Demo() {
+    
+} // End of Main class.
+
+/**
+ * @author wozller
+ */
+class Demos {
+    
+    public static void postgreSQL_Demo() {
         
         Connection connection = establishConnection();
         
     } // End of postgreSQL_Demo method.
     
-    private Connection establishConnection() {
+    private static Connection establishConnection() {
         
         final String url;
         final String user;
@@ -56,7 +64,7 @@ public class Main {
         
     } // End of setupConnection method.
     
-    private void initialJedisExperiment() {
+    private static void initialJedisExperiment() {
         
         Jedis jedis = new Jedis();
         
@@ -127,4 +135,4 @@ public class Main {
         
     } // End of initialJedisExperiment method.
     
-} // End of Main class.
+} // End of Demos class.
