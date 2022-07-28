@@ -20,6 +20,8 @@ public class Main {
 
     public static void main(String[] args) {
         
+        Demos.postgreSQL_Demo();
+        
     } // End of main method.
     
     
