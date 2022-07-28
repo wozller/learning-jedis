@@ -48,15 +48,11 @@ class Demos {
         
         System.out.println("Enter url: ");
         url = input.nextLine();
-        System.out.println("Enter user: ");
-        user = input.nextLine();
-        System.out.println("Enter password: ");
-        password = input.nextLine();
         
         Connection connection = null;
         
         try {
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
